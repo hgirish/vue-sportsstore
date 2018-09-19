@@ -38,7 +38,9 @@ module.exports = function (req, res, next) {
         jwt.verify(token, APP_SECRET);
         next();
         return;
-      } catch (err) {}
+      } catch (err) {
+        // I want application to not crush, but don't care about the message
+      }
     }
     res.statusCode = 401;
     res.end();
